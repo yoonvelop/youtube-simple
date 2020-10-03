@@ -1,0 +1,37 @@
+.app {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.detail {
+  flex: 1 1 70%;
+}
+
+.list {
+  max-width: 40rem;
+  background-color: #f9f9f9;
+  flex: 1 1 30%;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #030303;
+  font-size: 1.2rem;
+}
+
+h2 > svg {
+  color: tomato;
+}
+
+@media screen and (max-width: 48rem) {
+  .content {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+}
