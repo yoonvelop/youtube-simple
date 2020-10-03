@@ -1,5 +1,6 @@
 import React, { memo, useRef } from "react";
 import styles from "./Search.module.css";
+import { AiOutlineSearch } from "react-icons/ai";
 const Search = memo(({ onSearch }) => {
   const inputRef = useRef();
   const handleSearch = () => {
@@ -17,24 +18,24 @@ const Search = memo(({ onSearch }) => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <img className={styles.img} src="/images/logo.png" alt="logo" />
-        <h1 className={styles.title}>Youtube</h1>
+      <div className={styles.container}>
+        <a className={styles.logo} href="/">
+          <img className={styles.img} src="/images/logo.png" alt="logo" />
+          <h1 className={styles.title}>Simple Youtube</h1>
+        </a>
+        <div className={styles.inputBox}>
+          <input
+            ref={inputRef}
+            className={styles.input}
+            type="search"
+            placeholder="검색"
+            onKeyPress={onKeyPress}
+          />
+          <button className={styles.button} type="submit" onClick={onClick}>
+            <AiOutlineSearch className={styles.searchIcon} />
+          </button>
+        </div>
       </div>
-      <input
-        ref={inputRef}
-        className={styles.input}
-        type="search"
-        placeholder="Search..."
-        onKeyPress={onKeyPress}
-      />
-      <button className={styles.button} type="submit" onClick={onClick}>
-        <img
-          className={styles.buttonImg}
-          src="/images/search.png"
-          alt="search"
-        />
-      </button>
     </header>
   );
 });

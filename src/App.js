@@ -3,6 +3,7 @@ import styles from "./App.module.css";
 import VideoDetail from "./components/detail/VideoDetail";
 import VideoList from "./components/list/VideoList";
 import Search from "./components/search/Search";
+import { ImFire } from "react-icons/im";
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
@@ -39,10 +40,15 @@ function App({ youtube }) {
         )}
 
         <div className={styles.list}>
+          {!selectedVideo && (
+            <h2>
+              <ImFire /> 인기 Top 25
+            </h2>
+          )}
           <VideoList
             videos={videos}
             onVideoClick={selectVideo}
-            display={selectedVideo ? "list" : "grid"}
+            // display={selectedVideo ? "list" : "grid"}
           />
         </div>
       </section>
