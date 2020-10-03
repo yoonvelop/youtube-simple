@@ -1,43 +1,52 @@
 import React, { memo } from "react";
 import styles from "./VideoItems.module.css";
 import LinesEllipsis from "react-lines-ellipsis";
+import { BsDot } from "react-icons/bs";
 
-const VideoItem = memo(({ video, video: { snippet }, onVideoClick }) => {
-  // const displayType = display === "list" ? styles.list : styles.grid;
-  const defference = calculateDate(snippet.publishedAt);
-
-  return (
-    <li className={`${styles.container}`} onClick={() => onVideoClick(video)}>
-      <div className={styles.video}>
-        <img
-          className={styles.thumbnail}
-          src={snippet.thumbnails.medium.url}
-          alt="video thumbnail"
-        />
-        <div className={styles.metadata}>
-          <LinesEllipsis
-            className={styles.title}
-            text={snippet.title}
-            maxLine="2"
-            ellipsis="..."
-            trimRight
-            basedOn="letters"
+const VideoItem = memo(
+  ({ video, video: { snippet, statistics }, onVideoClick }) => {
+    // const displayType = display === "list" ? styles.list : styles.grid;
+    const defference = calculateDate(snippet.publishedAt);
+    console.log(statistics);
+    return (
+      <li className={`${styles.container}`} onClick={() => onVideoClick(video)}>
+        <div className={styles.video}>
+          <img
+            className={styles.thumbnail}
+            src={snippet.thumbnails.medium.url}
+            alt="video thumbnail"
           />
-          <p className={styles.channel}>{snippet.channelTitle}</p>
-          <p className={styles.date}>{defference}일 전</p>
-          <LinesEllipsis
-            className={styles.desc}
-            text={snippet.description}
-            maxLine="2"
-            ellipsis="..."
-            trimRight
-            basedOn="letters"
-          />
+          <div className={styles.metadata}>
+            <LinesEllipsis
+              className={styles.title}
+              text={snippet.title}
+              maxLine="2"
+              ellipsis="..."
+              trimRight
+              basedOn="letters"
+            />
+            <p className={styles.channel}>{snippet.channelTitle}</p>
+            <span className={styles.viewCount}>
+              조회수 {statistics.viewCount}회
+            </span>
+            <span className={styles.date}>
+              <BsDot />
+              {defference}일 전
+            </span>
+            <LinesEllipsis
+              className={styles.desc}
+              text={snippet.description}
+              maxLine="1"
+              ellipsis="..."
+              trimRight
+              basedOn="letters"
+            />
+          </div>
         </div>
-      </div>
-    </li>
-  );
-});
+      </li>
+    );
+  }
+);
 
 function calculateDate(publishedAt) {
   const publishedArr = publishedAt

@@ -6,7 +6,7 @@ class Youtube {
   async mostPopular() {
     const response = await this.youtube.get("videos", {
       params: {
-        part: "snippet",
+        part: "snippet,statistics",
         chart: "mostPopular",
         maxResults: 25,
         regionCode: "KR",
@@ -18,7 +18,7 @@ class Youtube {
   async search(query) {
     const response = await this.youtube.get("search", {
       params: {
-        part: "snippet",
+        part: "snippet,statistics",
         maxResults: 25,
         type: "video",
         q: query,
