@@ -4,9 +4,10 @@ import LinesEllipsis from "react-lines-ellipsis";
 import { BsDot } from "react-icons/bs";
 
 const VideoItem = memo(
-  ({ video, video: { snippet, statistics }, onVideoClick }) => {
+  ({ video, video: { snippet, statistics }, onVideoClick, size }) => {
     // const displayType = display === "list" ? styles.list : styles.grid;
     const defference = calculateDate(snippet.publishedAt);
+    const sizeType = size === "mini" ? styles.mini : "";
     console.log(statistics);
     return (
       <li className={`${styles.container}`} onClick={() => onVideoClick(video)}>
@@ -16,31 +17,33 @@ const VideoItem = memo(
             src={snippet.thumbnails.medium.url}
             alt="video thumbnail"
           />
-          <div className={styles.metadata}>
+          <div className={`${styles.metadata} ${sizeType}`}>
             <LinesEllipsis
               className={styles.title}
               text={snippet.title}
-              maxLine="2"
+              maxLine={size === "mini" ? 1 : 2}
               ellipsis="..."
               trimRight
               basedOn="letters"
             />
             <p className={styles.channel}>{snippet.channelTitle}</p>
-            <span className={styles.viewCount}>
-              조회수 {statistics.viewCount}회
-            </span>
-            <span className={styles.date}>
-              <BsDot />
-              {defference}일 전
-            </span>
-            <LinesEllipsis
-              className={styles.desc}
-              text={snippet.description}
-              maxLine="1"
-              ellipsis="..."
-              trimRight
-              basedOn="letters"
-            />
+
+            {statistics && (
+              <span className={styles.viewCount}>
+                조회수 {statistics.viewCount}회 <BsDot />
+              </span>
+            )}
+            <span className={styles.date}>{defference}일 전</span>
+            {size === "" && (
+              <LinesEllipsis
+                className={styles.desc}
+                text={snippet.description}
+                maxLine="1"
+                ellipsis="..."
+                trimRight
+                basedOn="letters"
+              />
+            )}
           </div>
         </div>
       </li>

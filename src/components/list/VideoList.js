@@ -2,7 +2,7 @@ import React from "react";
 import VideoItem from "../item/VideoItem";
 import styles from "./VideoList.module.css";
 
-const VideoList = ({ videos, onVideoClick }) => {
+const VideoList = ({ videos, onVideoClick, size }) => {
   return (
     <ul className={styles.videos}>
       {videos.map((video) => (
@@ -10,6 +10,7 @@ const VideoList = ({ videos, onVideoClick }) => {
           key={video.id}
           video={video}
           onVideoClick={onVideoClick}
+          size={size}
           // display={display}
         />
       ))}

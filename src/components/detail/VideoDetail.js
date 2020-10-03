@@ -1,6 +1,12 @@
 import React from "react";
 import styles from "./VideoDetail.module.css";
-const VideoDetail = ({ video, video: { snippet } }) => {
+import { AiFillLike, AiFillDislike } from "react-icons/ai";
+const VideoDetail = ({ video, video: { snippet, statistics }, onSearch }) => {
+  const handleSearch = (event) => {
+    const value = event.currentTarget.textContent.replace("#", "");
+    console.log(value);
+    onSearch(value);
+  };
   return (
     <section className={styles.detail}>
       <iframe
@@ -13,8 +19,38 @@ const VideoDetail = ({ video, video: { snippet } }) => {
         frameBorder="0"
         allowFullScreen
       ></iframe>
-      <h2>{snippet.title}</h2>
-      <h3>{snippet.channelTitle}</h3>
+      <p className={styles.tags}>
+        {snippet.tags &&
+          snippet.tags.map((tag, index) => (
+            <span className={styles.tag} key={index} onClick={handleSearch}>
+              #{tag}
+            </span>
+          ))}
+      </p>
+      <h2 className={styles.title}>{snippet.title}</h2>
+      <div className={styles.meta}>
+        <div>
+          <span className={styles.channel}>{snippet.channelTitle}</span>
+          {statistics && (
+            <>
+              <span>조회수 {statistics.viewCount}회</span>
+              <span>{snippet.publishedAt.substring(0, 10)}</span>
+            </>
+          )}
+        </div>
+        {statistics && (
+          <div className={styles.likeBox}>
+            <span>
+              <AiFillLike />
+              {statistics.likeCount}
+            </span>
+            <span>
+              <AiFillDislike />
+              {statistics.dislikeCount}
+            </span>
+          </div>
+        )}
+      </div>
       <pre className={styles.description}>{snippet.description}</pre>
     </section>
   );

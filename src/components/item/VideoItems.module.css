@@ -51,6 +51,23 @@
   margin: 0;
   font-weight: 500;
 }
+
+.metadata {
+  height: 100%;
+  margin-left: 1em;
+}
+
+.mini .title {
+  font-size: 0.9rem !important;
+}
+
+.mini .channel,
+.mini .date,
+.mini .desc,
+.mini .viewCount {
+  font-size: 0.7rem;
+}
+
 .date > svg {
   vertical-align: middle;
 }
@@ -58,8 +75,9 @@
 .desc {
   margin-top: 0.8rem;
 }
-@media screen and (max-width: 48rem) {
+
+/* @media screen and (max-width: 48rem) {
   .container.grid {
     width: 100%;
   }
-}
+} */

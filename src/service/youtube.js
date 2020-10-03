@@ -18,10 +18,10 @@ class Youtube {
   async search(query) {
     const response = await this.youtube.get("search", {
       params: {
-        part: "snippet,statistics",
+        part: "snippet",
         maxResults: 25,
         type: "video",
-        q: query,
+        q: encodeURI(query),
       },
     });
     return response.data.items.map((item) => ({

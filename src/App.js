@@ -35,7 +35,7 @@ function App({ youtube }) {
       <section className={styles.content}>
         {selectedVideo && (
           <div className={styles.detail}>
-            <VideoDetail video={selectedVideo} />
+            <VideoDetail video={selectedVideo} onSearch={search} />
           </div>
         )}
 
@@ -48,6 +48,7 @@ function App({ youtube }) {
           <VideoList
             videos={videos}
             onVideoClick={selectVideo}
+            size={selectedVideo ? "mini" : ""}
             // display={selectedVideo ? "list" : "grid"}
           />
         </div>
