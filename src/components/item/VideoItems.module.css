@@ -76,6 +76,30 @@
   margin-top: 0.8rem;
 }
 
+@media screen and (max-width: 25rem) {
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .channel,
+  .date,
+  .desc,
+  .viewCount {
+    font-size: 0.7rem;
+  }
+
+  .mini .title {
+    font-size: 0.8rem !important;
+  }
+
+  .mini .channel,
+  .mini .date,
+  .mini .desc,
+  .mini .viewCount {
+    font-size: 0.6rem;
+  }
+}
+
 /* @media screen and (max-width: 48rem) {
   .container.grid {
     width: 100%;
