@@ -8,7 +8,6 @@ const VideoItem = memo(
     // const displayType = display === "list" ? styles.list : styles.grid;
     const defference = calculateDate(snippet.publishedAt);
     const sizeType = size === "mini" ? styles.mini : "";
-    console.log(statistics);
     return (
       <li className={`${styles.container}`} onClick={() => onVideoClick(video)}>
         <div className={styles.video}>
