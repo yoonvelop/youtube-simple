@@ -1,5 +1,6 @@
 import React, { memo, useRef } from "react";
 import styles from "./Search.module.css";
+import { FaYoutube } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 const Search = memo(({ onSearch }) => {
   const inputRef = useRef();
@@ -19,8 +20,8 @@ const Search = memo(({ onSearch }) => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <a className={styles.logo} href="/">
-          <img className={styles.img} src="/images/logo.png" alt="logo" />
+        <a className={styles.logo} href="/youtube-simple">
+          <FaYoutube />
           <h1 className={styles.title}>Simple Youtube</h1>
         </a>
         <div className={styles.inputBox}>
